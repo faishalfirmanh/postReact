@@ -11,10 +11,18 @@ export default class Header extends Component {
   render() {
     return (
       <View style={{backgroundColor:'rgb(119,58,237)'}}>
-        <Text style={{fontSize:30}}>Ini dari header</Text>
+        <HederFungsi name="cobak from Header"/>
       </View>
     );
   }
+}
+
+function HederFungsi(props){
+  return(
+      <Text style={{fontSize:30}}>
+        {props.name}
+      </Text>
+    )
 }
 
 
@@ -24,3 +32,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+// export default HederFungsi

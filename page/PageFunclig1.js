@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+//1
 
 import {
   View,
@@ -20,6 +20,8 @@ import {
 } from 'react-native';
 
 //
+
+
 export default class PageFunclig1 extends Component {
   constructor(props){
       super(props)
@@ -33,7 +35,8 @@ export default class PageFunclig1 extends Component {
   }
 
   componentDidMount(){
-    fetch('http://192.168.0.2/cobares/Getuser.php')
+   fetch('https://cobarest.000webhostapp.com/')
+    //fetch('http://192.168.0.7/cobares/Getuser.php')
     .then((respon)=>
       respon.json()
     )
@@ -48,7 +51,8 @@ export default class PageFunclig1 extends Component {
   insertUsers = ()=>{
     const {textInputName}= this.state
     const {textInputAge} = this.state
-    fetch('http://192.168.0.2/cobares/Tambah.php',{
+    //fetch('http://192.168.0.7/cobares/Tambah.php',{
+    fetch('https://cobarest.000webhostapp.com/tambah.php',{
       method:'POST',
       header:{
         Accept :'application/json',
@@ -65,25 +69,30 @@ export default class PageFunclig1 extends Component {
         this.setState({
             item:responJson.name
           })
+          Alert.alert("Sukses")
         })
       .catch((error)=>{
         console.error("ERRO COK");
         })
   }
 
+  ViewUserlist =()=>{
+    this.props.navigation.navigate('ViewUserlist')
+  }
+
   renderItem = ({item}) => (
-    <TouchableOpacity onPress={() => alert(item.age)}>
+    <TouchableOpacity  style={cssnya.item}>
       <View>
         <Text>{item.name}</Text>
+        <Text>{item.age}</Text>
       </View>
     </TouchableOpacity>
   )
 
-
-
   render() {
     return (
       <View style={cssnya.container}>
+
         <Text>Page CRUDt</Text>
         <Text>
           masukkan nama brow
@@ -108,16 +117,54 @@ export default class PageFunclig1 extends Component {
               Simpan
             </Text>
           </TouchableOpacity>
+
+
           <FlatList
+            style={{marginTop:30, width:250}}
             data={this.state.dataSource}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index}
           />
+
       </View>
     );
   }
 }
 
+class ViewUserlist extends Component{
+  constructor() {
+
+  }
+  static navigationOptions={
+    title:'DATA USERS'
+  }
+  render(){
+    return(
+      <View>
+        <Text>
+        Data users
+        </Text>
+      </View>
+      )
+  }
+}
+
+function Pindah({navigation}) {
+  return (
+    <View>
+
+      <Text>
+        Mobil
+
+      </Text>
+      <TouchableOpacity onPress={() => navigation.navigate('DaftrMotor')} style={cssnya.toc}>
+        <Text style={cssnya.tekToc}>
+              back home
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 
 
@@ -137,4 +184,13 @@ const cssnya = StyleSheet.create({
     backgroundColor:'rgb(60,212,22)',
     borderRadius:10
   },
+  item: {
+    backgroundColor: '#f9c2ff',
+    marginTop:10,
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 });
+
+// export default PageFunclig1;

@@ -73,9 +73,7 @@ export default class PageApi2 extends Component {
         else {
           return(
             <View>
-            <Button
-            title="Clikc" onPress={this.getFilm2}
-            />
+          
                   <FlatList
                   data={this.state.dataSource}
                   renderItem={this.rendItem}

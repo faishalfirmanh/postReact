@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
 
@@ -12,6 +13,7 @@ import com.android.build.OutputFile
  * `apply from: "../../node_modules/react-native/react.gradle"` line.
  *
  * project.ext.react = [
+      iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ]
  *   // the name of the generated asset file containing your JS bundle
  *   bundleAssetName: "index.android.bundle",
  *

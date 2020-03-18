@@ -3,21 +3,24 @@
 import React, { Component } from 'react';
 import 'react-native-gesture-handler';
 import PageMotor from './page/PageMotor'
-import PageMobil from './page/PageMobil'
+import Mobil from './page/Mobil'
+import Hitung from './Hitung'
 import PageDetailMotor from './page/PageDetailMotor'
 import PageFunclig1 from './page/PageFunclig1'
 import PageApi from './page/PageApi'
+import Tutorial from './Tutorial'
 import PageApi2 from './page/PageApi2'
 import PageDaftarClub from './page/PageDaftarClub'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import TutorNexToDo from './TutorNexToDo'
 
 import {
   View,
   Text,
   StyleSheet,
   Image,
+  FlatList,
   TouchableOpacity,
   Button,
   ActivityIndicator
@@ -32,7 +35,6 @@ function Sapa(props){
 function Kosongan() {
     return (
       <View style={{backgroundColor:'white', height:50}}>
-
       </View>
     );
 }
@@ -73,8 +75,8 @@ function HomeScreenFungsi({navigation}) {
       <Text>Home Screen</Text>
       <View style={{alignItems:'center'},cssbaru.styleTombol}>
                 <Button
-                  title="Details"
-                  onPress={() => navigation.navigate('Details')}
+                  title="kalkulator"
+                  onPress={() => navigation.navigate('hitung')}
                 />
               <Kosongan/>
                 <Button
@@ -85,13 +87,13 @@ function HomeScreenFungsi({navigation}) {
                   <Kosongan/>
                 <Button
                   color="rgb(73,230,9)"
-                  title="Mobil"
-                  onPress={() => navigation.navigate('Mobil')}
+                  title="todoApp"
+                  onPress={() => navigation.navigate('TutorNexToDo')}
                 />
                 <Kosongan/>
                 <Button
                   color="rgb(54,27,33)"
-                  title="crud o"
+                  title="crud"
                   onPress={() => navigation.navigate('funcLig')}
                 />
                 <Kosongan/>
@@ -110,6 +112,7 @@ function HomeScreenFungsi({navigation}) {
 function DetailsScreenFungsi({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
         <Text>ini page Details</Text>
         <Sapa nama="isal" namaTunggangan="jupiter"/>
         <Sapa nama="Zlatan" namaTunggangan ="lambo"/>
@@ -117,6 +120,11 @@ function DetailsScreenFungsi({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('home')} style={styles.toc}>
             <Text style={styles.tekToc}>
                   back home
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Mobil')} style={styles.new}>
+            <Text style={styles.tekToc}>
+                  new
             </Text>
           </TouchableOpacity>
         </View>
@@ -154,12 +162,13 @@ class Moba extends Component {
     }
   }
 
-
-export default class Cobak extends Component {
+ class Cobak extends Component {
   constructor(){
     super() //wajib kalau di state
     this.state ={
-      jumlah:0
+      jumlah:0,
+      isloading:true,
+      dataSource:[],
     }
     this.state.customStyle ={
       color:'rgb(66,203,137)'
@@ -189,23 +198,36 @@ btnGet(){
   this.setState({})
 
 }
+
+
+renderItem = ({item,navigation}) => (
+  <TouchableOpacity  style={styles.item}>
+    <View>
+      <Text>{item.name}</Text>
+      <Text>{item.age}</Text>
+    </View>
+  </TouchableOpacity>
+)
   render() {
     return (
       <View style={styles.container}>
         <NavigationContainer>
             <Stack.Navigator initialRouteName="home">
               <Stack.Screen name="home" component={HomeScreenFungsi} />
-              <Stack.Screen name="Details" component={DetailsScreenFungsi} />
+              <Stack.Screen name="hitung" component={Hitung} />
               <Stack.Screen name="DaftrMotor" component={PageMotor} />
-              <Stack.Screen name="Mobil" component={PageMobil} />
+              <Stack.Screen name="TutorNexToDo" component={TutorNexToDo} />
               <Stack.Screen name="funcLig" component={PageFunclig1} options={{title:"dfsadf"}} />
               <Stack.Screen name="api" component={PageApi2} />
+              <Stack.Screen name="Tutorial" component={Tutorial} />
             </Stack.Navigator>
         </NavigationContainer>
       </View>
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   toc:{
@@ -215,6 +237,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    width:160,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
   imageView: {
     height: 80 ,
@@ -235,5 +264,11 @@ const styles = StyleSheet.create({
     color:'rgb(195,3,217)',
 
   },
+  new:{
+    height:50, width:150,
+    backgroundColor:'rgb(232,32,32)',
+    borderRadius:10
+  }
 
 });
+export default Cobak
