@@ -18,12 +18,21 @@ import Basic from './Basic' //list and add icon
 import TutorNexninja from './TutorNexninja'
 import TutorNexToDo from './TutorNexToDo'
 import TutorSteve from './TutorSteve'
-import TutorSteve2State from './TutorSteve2State'
+import CobaRedux from './CobaRedux';
+
+
+//redux
+
 
 //import Hitung from './Hitung';
 import {name as appName} from './app.json';
+import CobaRedux2 from './CobaRedux2';
 
-AppRegistry.registerComponent(appName, () => Cobak);
+//AppRegistry.registerComponent(appName, () => CobaRedux2);
+
+AppRegistry.registerComponent(appName, () => CobaRedux2)
+
+
 
 // AppRegistry.registerComponent(appName, () => Cobak);
 // AppRegistry.registerComponent(appName, () => Hitung);

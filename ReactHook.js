@@ -26,7 +26,8 @@ const ReactHook = ()=>{
       <Text>{count}</Text>
       <Button title="Press here" onPress={() => setCount(count + 1)}/>
       <Text style={{fontSize:20}}>nama nya {name}</Text>
-      <Text style={{fontSize:20}}>penyanyi: {person.name} usia {person.age} </Text>
+      <Text style={{fontSize:20}}>penyanyi: {person.name}</Text>
+      <Text style={{"fontSize":20}}>usia {person.age} </Text>
       <Button title="ubah"
         onPress={()=>ubahNama()}
         color="red"
