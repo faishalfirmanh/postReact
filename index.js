@@ -19,7 +19,7 @@ import TutorNexninja from './TutorNexninja'
 import TutorNexToDo from './TutorNexToDo'
 import TutorSteve from './TutorSteve'
 import CobaRedux from './CobaRedux';
-
+import Reduxpra from './Reduxpra';
 
 //redux
 
@@ -30,7 +30,7 @@ import CobaRedux2 from './CobaRedux2';
 
 //AppRegistry.registerComponent(appName, () => CobaRedux2);
 
-AppRegistry.registerComponent(appName, () => CobaRedux2)
+AppRegistry.registerComponent(appName, () => Reduxpra)
 
 
 
